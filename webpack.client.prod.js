@@ -96,7 +96,7 @@ module.exports = {
 
     new BundleAnalyzerPlugin({
       analyzerMode  :'static',
-      reportFilename:'report.html',
+      reportFilename:(process.env.COMPILE ? 'report.html' : 'report.dev.html'),
       openAnalyzer  :false
     }),
 

@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "description": "",
   "main": "public/index.js",
+  "engines": {
+    "node": "12.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "client:dev:start": "webpack-dev-server --progress --config ./webpack.client.dev.js --watch",
@@ -13,6 +16,7 @@
     "cdc": "npm run client:dev:compile",
     "cps": "npm run client:prod:start",
     "cpc": "npm run client:prod:compile",
+    "build":"npm run cpc",
     "test-eslint": "eslint"
   },
   "repository": {
