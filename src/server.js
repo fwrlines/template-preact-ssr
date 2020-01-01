@@ -1,10 +1,10 @@
-import 'config/patchPreactSSR'
+/* eslint-disable no-console */
 import express from 'express'
 import serverRenderer from './renderer.js'
 import path from 'path'
 
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3003
 
 // initialize the application and create the routes
 const app = express()

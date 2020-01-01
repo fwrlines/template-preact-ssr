@@ -6,9 +6,9 @@ module.exports = function (api) {
       '@babel/preset-env',
       {
         //modules:'commonjs',
-        //targets:{
-        //node:'12'
-        //}
+        targets:{
+          node:'12'
+        }
         //debug:true
       }
     ],
@@ -20,7 +20,7 @@ module.exports = function (api) {
       'module-resolver', {
         root :['./src'],
         alias:{
-          react                 :'preact/compat',
+          'react'               :'preact/compat',
           'react-dom/test-utils':'preact/test-utils',
           'react-dom'           :'preact/compat'
           // Must be below test-utils
