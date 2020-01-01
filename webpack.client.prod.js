@@ -13,8 +13,8 @@ const TerserPlugin = require('terser-webpack-plugin')
 
 // C. PREPARE AND LIST FILES
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-//const ReactLoadableSSRAddon = require('react-loadable-ssr-addon')
-//const LoadablePlugin = require('@loadable/webpack-plugin')
+const ReactLoadableSSRAddon = require('react-loadable-ssr-addon')
+const LoadablePlugin = require('@loadable/webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 
 // D. SECURITY
@@ -79,9 +79,7 @@ module.exports = {
       path:'./.prod.env'
     }),
 
-    /*
     new LoadablePlugin(),
-    */
 
 	 new MiniCssExtractPlugin({
       filename     :'[contenthash:5].css',
@@ -100,11 +98,9 @@ module.exports = {
       openAnalyzer  :false
     }),
 
-    /*
 	  new ReactLoadableSSRAddon({
       filename:'assets-manifest.json'
-    }),*/
-
+    }),
 
     new webpack.HotModuleReplacementPlugin()
 

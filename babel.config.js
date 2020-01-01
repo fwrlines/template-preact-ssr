@@ -9,27 +9,44 @@ module.exports = function (api) {
         //targets:{
         //node:'12'
         //}
-        debug:true
+        //debug:true
       }
     ],
     //'@babel/preset-react'
     'preact'
   ]
   const plugins = [
-    ['module-resolver', {
-      root:['./src']
-    }],
+    [
+      'module-resolver', {
+        root :['./src'],
+        alias:{
+          react                 :'preact/compat',
+          'react-dom/test-utils':'preact/test-utils',
+          'react-dom'           :'preact/compat'
+          // Must be below test-utils
+        }
+      }
+    ],
     '@babel/plugin-proposal-class-properties',
-		    ['babel-plugin-inline-import', {
-      extensions:[
-        '.html',
-        '.xml',
-        '.graphql'
-      ] }]
-
-    //['add-module-exports']
-    //['@loadable/babel-plugin']
+    ['babel-plugin-inline-import',
+      {
+        extensions:[
+          '.html',
+          '.xml',
+          '.graphql'
+        ]
+      }
+    ],
+    ['@babel/plugin-transform-react-jsx', {
+      pragma          :'h', // default pragma is React.createElement
+      pragmaFrag      :'Fragment', // default is React.Fragment
+      throwIfNamespace:false // defaults to true
+    }]
   ]
+
+
+  //['add-module-exports']
+  //['@loadable/babel-plugin']
 
 
   return {

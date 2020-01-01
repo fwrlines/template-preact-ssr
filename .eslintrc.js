@@ -16,6 +16,9 @@ module.exports = {
     'eslint:recommended',
     'eslint-config-synacor'
   ],
+  'plugins': [
+    'react-hooks',
+  ],
   'parser': 'babel-eslint',
   'rules':{
     'indent': [
@@ -38,6 +41,39 @@ module.exports = {
           "on": "colon"
         }
       }
-    ]
+    ],
+    'react/jsx-closing-bracket-location': [
+      'error', 
+      'tag-aligned'
+    ],
+    'react/jsx-first-prop-new-line': [
+       'error',
+        'multiline-multiprop'
+    ],
+    'react/jsx-max-props-per-line': [
+      'error', 
+      { 'maximum':1}
+    ],
+    'react/jsx-one-expression-per-line': [
+      'error', {
+      'allow': 'single-child'
+      }
+    ],
+    'react/jsx-equals-spacing': [
+      1,
+      'never'
+    ],
+    'react/jsx-indent-props': [
+      "error",
+      2
+
+    ],
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+    'no-unused-vars': [
+      "error", 
+      { "varsIgnorePattern": "h|Fragment"}
+    ],
+    'quote-props': ["error", "consistent-as-needed"]
   },
 }

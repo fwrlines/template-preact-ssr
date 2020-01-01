@@ -4,5 +4,11 @@
     "env": {
       "VARNAME":"d@value"
     }
-  }
+  },
+	"routes":[
+  	{
+      "src": "/.*",
+      "dest": "api/renderer.js"           
+  	}
+  ]  
 }
