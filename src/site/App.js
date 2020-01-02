@@ -8,6 +8,7 @@ const App = () => (
       thing="thing"
       thing2="thing2"
     />
+    <h3>Test reload live ssr</h3>
   </>
 )
 
