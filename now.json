@@ -2,7 +2,7 @@
   "regions":["lhr", "bru"],
   "build":{
     "env": {
-      "VARNAME":"d@value"
+      "GRAPHQL_ENDPOINT":"https://s.meccamico.com/graphql"
     }
   },
 	"routes":[

@@ -5,14 +5,14 @@ import { h } from 'preact'
 //import ReactDOMServer from 'react-dom/server' //Not in use if we use apollo own renderer
 
 
-//import { ApolloProvider } from '@apollo/react-hooks'
+import { ApolloProvider } from '@apollo/react-hooks'
 import { ChunkExtractor  } from '@loadable/server'
 
 //import { StaticRouter } from 'react-router-dom'
 //import { Helmet } from 'react-helmet'
 
-//import { getClient } from './apiClientSSR'
-//import { renderToStringWithData  } from '@apollo/react-ssr'
+import { getClient } from './graphql/getClientSSR'
+import { getMarkupFromTree  } from '@apollo/react-ssr'
 
 //import Terser from 'terser'
 
@@ -22,14 +22,22 @@ import App from 'site/App.js'
 
 import template from 'assets/html/index.prod.html'
 
-import render from 'preact-render-to-string'
+import render from 'preact-render-to-string' //By default we use apollo's renderer
 
 import stats from '../public/loadable-stats.json'
 
 /* const statsFile = path.resolve(__dirname, '../dist/loadable-stats.json')
    We create an extractor from the statsFile */
 
-//const client = getClient(process.env.GRAPHQL_ENDPOINT_SRV)
+
+function renderToStringWithData(component) {
+  return getMarkupFromTree({
+    tree          :component,
+    renderFunction:render
+  })
+}
+
+const client = getClient(process.env.GRAPHQL_ENDPOINT)
 
 const routerContext = {}
 
@@ -57,9 +65,16 @@ export default async(req, res) => {
     extractor.collectChunks(appJsx)
   )
   */
-  const appJsx = <App />
 
-  const html = render(
+  const appJsx=(
+    <ApolloProvider
+      client={client}
+    >
+      <App />
+    </ApolloProvider>
+  )
+
+  const html = await renderToStringWithData(
     extractor.collectChunks(appJsx)
   )
 
@@ -90,7 +105,7 @@ export default async(req, res) => {
 
   return res.send(
     template
-      .replace('<div id="main"></div>', `<div id="main">Oy ${html}</div>`)
+      .replace('<div id="main"></div>', `<div id="main">${html}</div>`)
       .replace('</body>', scriptTags + '</body>')
       //.replace('</body>', scriptTags + `<script>window.__APOLLO_STATE__ = ${JSON.stringify(client.extract())}</script>` + '</body>')
       .replace('<title></title>', linkTags + styleTags)

@@ -26,9 +26,19 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 // https://momentjs.com/docs/
 
 module.exports = {
+  resolve:{
+    alias:{
+      'react'               :'preact/compat',
+      'react-dom/test-utils':'preact/test-utils',
+      'react-dom'           :'preact/compat'
+      // Must be below test-utils
+    }
+  },
+
   entry:[
     './src/client.js'
   ],
+
   output:{
     path         :path.resolve(__dirname, 'public/'),
     publicPath   :'/',

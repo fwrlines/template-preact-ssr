@@ -17,6 +17,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 //const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
+  resolve:{
+    alias:{
+      'react'               :'preact/compat',
+      'react-dom/test-utils':'preact/test-utils',
+      'react-dom'           :'preact/compat'
+      // Must be below test-utils
+    }
+  },
+
   entry:[
     './src/client.js'
   ],

@@ -21,8 +21,8 @@
     "server:start": "nodemon --exec babel-node src/server.js",
     "server:express:compile": "EXPRESS=true webpack --progress --verbose --config ./webpack.server.express.js --watch",
     "renderer:compile": "COMPILE=true webpack --config ./webpack.renderer.js",
-		"ss":"npm run server:start",
-		"rc":"npm run renderer:compile",
+    "ss": "npm run server:start",
+    "rc": "npm run renderer:compile",
     "build": "npm run cpc && npm run rc",
     "test-eslint": "eslint"
   },
@@ -37,14 +37,22 @@
   },
   "homepage": "https://github.com/fwrlines/template-preact-ssr#readme",
   "dependencies": {
+    "@apollo/react-hooks": "^3.1.3",
+    "@apollo/react-ssr": "^3.1.3",
     "@fwrlines/alphabet-scss": "^0.9.0",
     "@loadable/component": "^5.11.0",
     "@loadable/server": "^5.11.0",
+    "apollo-cache-inmemory": "^1.6.5",
+    "apollo-client": "^2.6.8",
+    "apollo-link": "^1.2.13",
+    "apollo-link-http": "^1.5.16",
+    "apollo-link-retry": "^2.2.15",
     "express": "^4.17.1",
+    "graphql": "^14.5.8",
     "module-alias": "^2.2.2",
+    "node-fetch": "^2.6.0",
     "preact": "^10.1.1",
-    "preact-render-to-string": "^5.1.3",
-    "preact-router": "^3.1.0"
+    "preact-render-to-string": "^5.1.3"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",
