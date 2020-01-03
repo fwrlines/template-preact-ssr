@@ -6,20 +6,6 @@
     }
   },
 	"routes":[
-    {
-      "src": "/(?<fn>[A-Za-z0-9-\/]+).(?<ext>(png|jpg|woff|woff2|otf|eot|ttf|ico|svg|glb|xml|txt))",
-      "dest": "/$fn.$ext",
-      "headers": {
-        "cache-control": "s-maxage=86400, max-age=604800"
-       }
-    },
-    {
-		  "src":"/(?<fn>[A-Za-z0-9~.-\/]+).(?<ext>(js|css))",
-			"dest": "/$fn.$ext",
-			"headers": {
-			  "cache-control": "s-maxage=86400, max-age=604800"
-       }
-    },
   	{
       "src": "/.*",
       "dest": "api/renderer.js"           
