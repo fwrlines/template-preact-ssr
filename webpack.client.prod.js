@@ -18,7 +18,7 @@ const LoadablePlugin = require('@loadable/webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 
 // D. SECURITY
-const Dotenv = require('dotenv-webpack')
+//const Dotenv = require('dotenv-webpack')
 
 /* E. EXTRA
    const NullPlugin = require('webpack-null-plugin') */
@@ -84,10 +84,6 @@ module.exports = {
       { from: './src/assets/fonts', to: './public' },
       { from: './src/assets/images', to: './public' }
     ]),
-
-    new Dotenv({
-      path:'./.prod.env'
-    }),
 
     new LoadablePlugin(),
 

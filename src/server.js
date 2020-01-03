@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+require('dotenv').config()
 import express from 'express'
 import serverRenderer from './renderer.js'
 import path from 'path'

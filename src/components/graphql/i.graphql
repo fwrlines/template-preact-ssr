@@ -1,0 +1,24 @@
+query {
+  i {
+    makes {
+      id
+      name
+      car
+      motorcycle
+      slug
+      seotext
+    }
+    services {
+      id
+      name
+      car
+      motorcycle
+      slug
+      seotext
+      icon
+      carbutton
+      motobutton
+      invisible
+    }
+  }
+}

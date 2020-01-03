@@ -12,9 +12,6 @@ const nodeExternals = require('webpack-node-externals')
 
 const TerserPlugin = require('terser-webpack-plugin')
 
-// C. Security
-
-const Dotenv = require('dotenv-webpack')
 
 //
 
@@ -42,7 +39,6 @@ module.exports = {
   },
 
   plugins:[
-	  new Dotenv(),
     new webpack.optimize.LimitChunkCountPlugin({
 		      maxChunks:1
 

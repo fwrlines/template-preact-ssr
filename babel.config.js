@@ -16,6 +16,7 @@ module.exports = function (api) {
     'preact'
   ]
   const plugins = [
+    'inline-dotenv',
     [
       'module-resolver', {
         root :['./src'],

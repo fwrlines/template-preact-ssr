@@ -106,8 +106,10 @@ export default async(req, res) => {
   return res.send(
     template
       .replace('<div id="main"></div>', `<div id="main">${html}</div>`)
-      .replace('</body>', scriptTags + '</body>')
-      //.replace('</body>', scriptTags + `<script>window.__APOLLO_STATE__ = ${JSON.stringify(client.extract())}</script>` + '</body>')
+      .replace('</body>',
+        scriptTags
+        + `<script>window.__APOLLO_STATE__ = ${JSON.stringify(client.extract())}</script>`
+        + '</body>')
       .replace('<title></title>', linkTags + styleTags)
       //.replace('<title></title>', helmet.title.toString() + helmet.meta.toString() + linkTags + styleTags)
     /* .replace(/(\r\n|\n|\r)/gm,'')

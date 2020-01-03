@@ -6,7 +6,7 @@ const webpack = require('webpack')
 
 
 // A. SECURITY
-const Dotenv = require('dotenv-webpack')
+//const Dotenv = require('dotenv-webpack') //Deprecated => replaced by babel plugin //Deprecated => replaced by babel plugin
 
 // B.DISPLAY
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -61,8 +61,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template:'./src/assets/html/index.dev.html'
     }),
-
-    new Dotenv(),
 
     /*
 	  new ReactLoadableSSRAddon({
