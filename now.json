@@ -5,6 +5,12 @@
       "GRAPHQL_ENDPOINT":"https://s.meccamico.com/graphql"
     }
   },
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@now/static-build"
+    }
+  ],
 	"routes":[
     {
       "src": "/(?<fn>[A-Za-z0-9-\/]+).(?<ext>(png|jpg|woff|woff2|otf|eot|ttf|ico|svg|glb|xml|txt))",
