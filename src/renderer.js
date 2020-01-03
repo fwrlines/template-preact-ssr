@@ -1,23 +1,20 @@
 import 'config/patchPreactSSR'
 import { h } from 'preact'
+
 //import React from 'react'
 
 //import ReactDOMServer from 'react-dom/server' //Not in use if we use apollo own renderer
 
 
 import { ApolloProvider } from '@apollo/react-hooks'
-import { ChunkExtractor  } from '@loadable/server'
+import { ChunkExtractor } from '@loadable/server'
 
 import { StaticRouter } from 'react-router-dom'
 
-//import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet'
 
 import { getClient } from './graphql/getClientSSR'
 import { getMarkupFromTree  } from '@apollo/react-ssr'
-
-//import Terser from 'terser'
-
-//import { SCP } from 'ui/service'
 
 import App from 'site/App.js'
 
@@ -83,10 +80,7 @@ export default async(req, res) => {
   const styleTags = extractor.getStyleTags() // or extractor.getStyleElements();
   // console.log('STYLE', extractor.getStyleTags())
 
-  /*
   const helmet = Helmet.renderStatic()
-  */
-
 
   return res.send(
     template
@@ -95,10 +89,9 @@ export default async(req, res) => {
         scriptTags
         + `<script>window.__APOLLO_STATE__ = ${JSON.stringify(client.extract())}</script>`
         + '</body>')
-      .replace('<title></title>', linkTags + styleTags)
-      //.replace('<title></title>', helmet.title.toString() + helmet.meta.toString() + linkTags + styleTags)
-    /* .replace(/(\r\n|\n|\r)/gm,'')
-       .replace(/\s\s+/g, '') */
+      .replace('<title></title>', helmet.title.toString() + helmet.meta.toString() + linkTags + styleTags)
+      .replace(/(\r\n|\n|\r)/gm,'') //Minification
+      .replace(/\s\s+/g, '') // Minification
   )
 
 }
