@@ -1,7 +1,6 @@
 #BUILDS
 
 public/
-api/
 
 # Logs
 logs
