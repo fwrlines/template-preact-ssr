@@ -7,7 +7,7 @@
   },
   "functions":{ 
     "api/renderer.js": { 
-      "memory": 1024
+      "memory": 512
     } 
   },
 	"routes":[
