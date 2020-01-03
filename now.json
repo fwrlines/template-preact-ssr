@@ -22,7 +22,7 @@
     },
   	{
       "src": "/.*",
-      "dest": "api/renderer2.js"           
+      "dest": "api/renderer.js"           
   	}
   ]  
 }
