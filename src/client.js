@@ -1,8 +1,10 @@
-import { h, render } from 'preact'
+import { h, render, hydrate } from 'preact'
 
 import { ApolloProvider } from '@apollo/react-hooks'
 import { getClient } from 'graphql/getClient'
+import { BrowserRouter } from 'react-router-dom'
 
+import { loadableReady } from '@loadable/component'
 
 import App from 'site/App'
 //import Clock from 'components/Clock'
@@ -18,8 +20,31 @@ const jsx = (
   <ApolloProvider
     client={client}
   >
-	  <App />
+    <BrowserRouter>
+	    <App />
+    </BrowserRouter>
   </ApolloProvider>
 )
 
-render(jsx, rootElement)
+/* When main pagedelivered by SSR, not sure why, js is loaded twice for Loadable components
+  console.log(rootElement.hasChildNodes(), rootElement.innerHTML) */
+
+loadableReady(() => {
+  if (rootElement.hasChildNodes()) {
+    hydrate(
+      jsx,
+      rootElement)
+  }
+  else {
+    render(
+      jsx,
+      rootElement)
+  }
+
+
+})
+
+if (module.hot) {
+  module.hot.accept()
+  require('preact/debug')
+}

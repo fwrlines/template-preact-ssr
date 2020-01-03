@@ -72,7 +72,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'no-unused-vars': [
       "error", 
-      { "varsIgnorePattern": "h|Fragment"}
+      { "varsIgnorePattern": "h|Fragment|React"}
     ],
     'quote-props': ["error", "consistent-as-needed"]
   },

@@ -8,7 +8,8 @@ import { h } from 'preact'
 import { ApolloProvider } from '@apollo/react-hooks'
 import { ChunkExtractor  } from '@loadable/server'
 
-//import { StaticRouter } from 'react-router-dom'
+import { StaticRouter } from 'react-router-dom'
+
 //import { Helmet } from 'react-helmet'
 
 import { getClient } from './graphql/getClientSSR'
@@ -45,32 +46,16 @@ export default async(req, res) => {
 
   const extractor = new ChunkExtractor({ stats })
 
-  /*
-  const appJsx=
-    <StaticRouter
-      location={req.url}
-      context={routerContext}
-    >
-
-      <ApolloProvider
-        client={client}
-      >
-        <SCP>
-          <AsyncTestComponent />
-        </SCP>
-      </ApolloProvider>
-    </StaticRouter>
-
-  const html = await renderToStringWithData(
-    extractor.collectChunks(appJsx)
-  )
-  */
-
   const appJsx=(
     <ApolloProvider
       client={client}
     >
-      <App />
+      <StaticRouter
+        location={req.url}
+        context={routerContext}
+      >
+        <App />
+      </StaticRouter>
     </ApolloProvider>
   )
 

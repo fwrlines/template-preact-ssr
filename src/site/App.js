@@ -1,5 +1,5 @@
 import { h, Fragment } from 'preact'
-import Clock from 'components/Clock'
+import Clock from 'components/AsyncClock'
 import QueryTester from 'components/QueryTester'
 
 const App = () => (

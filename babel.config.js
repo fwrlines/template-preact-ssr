@@ -42,12 +42,12 @@ module.exports = function (api) {
       pragma          :'h', // default pragma is React.createElement
       pragmaFrag      :'Fragment', // default is React.Fragment
       throwIfNamespace:false // defaults to true
-    }]
+    }],
+    '@loadable/babel-plugin'
   ]
 
 
   //['add-module-exports']
-  //['@loadable/babel-plugin']
 
 
   return {
