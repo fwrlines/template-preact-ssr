@@ -24,7 +24,7 @@
     "ss": "npm run server:start",
     "rc": "npm run renderer:compile",
     "build": "npm run cpc",
-    "now-build":"npm run rc",
+    "now-build":"npm run rc && echo",
     "test-eslint": "eslint"
   },
   "repository": {
