@@ -1,6 +1,6 @@
 ## Features 
 
-+ 100/100 pagespeed
++ 100/100 pagespeed BEFORE cdn caching
 + 60kb client transfer size (gzip)
 + modular scss library
 + modular component library
