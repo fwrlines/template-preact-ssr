@@ -24,6 +24,10 @@
     "ss": "npm run server:start",
     "rc": "npm run renderer:compile",
     "build": "npm run cpc && npm run rc",
+    "now-build": "npm run cpc",
+    "deploy": "git add . && git commit -m '[Auto] Compile and deploy from cli'",
+    "build:deploy":"npm run build && npm run deploy",
+    "bd":"npm run build:deploy",
     "test-eslint": "eslint"
   },
   "repository": {
