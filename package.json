@@ -23,6 +23,7 @@
     "renderer:compile": "COMPILE=true webpack --config ./webpack.renderer.js",
     "ss": "npm run server:start",
     "rc": "npm run renderer:compile",
+    "build":"npm run cpc && npm run rc",
     "now-build":"npm run cpc && npm run rc",
     "test-eslint": "eslint"
   },
