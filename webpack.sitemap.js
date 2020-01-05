@@ -12,7 +12,6 @@ const nodeExternals = require('webpack-node-externals')
 
 const TerserPlugin = require('terser-webpack-plugin')
 
-
 //
 
 
@@ -24,49 +23,17 @@ module.exports = {
     ],
     extensions:[
       '.js'
-    ],
-    alias:{
-      'react'               :'preact/compat',
-      'react-dom/test-utils':'preact/test-utils',
-      'react-dom'           :'preact/compat'
-      // Must be below test-utils
-    }
+    ]
   },
-
-  context:__dirname,
-
-  devServer:{
-    contentBase:[
-      path.resolve(__dirname, './public'),
-      path.resolve(__dirname, './src/assets/fonts'),
-      path.resolve(__dirname, './src/assets/images')
-    ],
-    watchContentBase  :true,
-    historyApiFallback:true,
-    port              :3000,
-    host              :'0.0.0.0',
-    hot               :true,
-    liveReload        :false,
-    clientLogLevel    :'debug',
-    disableHostCheck  :true //rdp
-  },
-
-  node:{
-    __filename:true,
-    __dirname :true
-  },
-
   entry:[
-    path.resolve(path.join(__dirname, 'src/server.js'))
+    path.resolve(path.join(__dirname, 'src/sitemap/renderer.js'))
   ],
-
   output:{
-    path         :path.resolve(__dirname, 'public/'),
+    path         :path.resolve(__dirname, 'api/'),
     publicPath   :'/',
-    filename     :'express.js',
+    filename     :'sitemap.js',
     libraryTarget:'commonjs2'
   },
-
   plugins:[
     new webpack.optimize.LimitChunkCountPlugin({
 		      maxChunks:1
@@ -74,7 +41,6 @@ module.exports = {
     })
 
   ],
-
   optimization:process.env.COMPILE ? {
     nodeEnv  :'production',
     minimize :true,
@@ -82,13 +48,11 @@ module.exports = {
       new TerserPlugin({})
     ]
   } : {},
-  
   target   :'node',
   mode     :'development',
   devtool  :'inline-cheap-source-map',
   externals:[nodeExternals()],
-
-  module:{
+  module   :{
     rules:[
       {
         test   :/\.(js)$/,

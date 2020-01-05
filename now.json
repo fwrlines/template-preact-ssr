@@ -7,6 +7,13 @@
   },
 	"routes":[
     {
+       "src": "/sitemap.xml",
+       "dest": "dist/sitemap.js",
+       "headers": {
+       "cache-control": "s-maxage=1800, max-age=1800"
+      }
+    },
+    {
       "src": "/(?<fn>[A-Za-z0-9-\/]+).(?<ext>(png|jpg|woff|woff2|otf|eot|ttf|ico|svg|glb|xml|txt))",
       "dest": "/$fn.$ext",
       "headers": {
