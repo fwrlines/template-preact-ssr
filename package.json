@@ -21,7 +21,7 @@
     "renderer:start": "nodemon --exec babel-node src/server.js",
     "renderer:compile": "COMPILE=true webpack --config ./webpack.renderer.js",
     "sitemap:start": "nodemon --exec babel-node src/sitemap/server.js",
-    "sitemap:compile": "COMPILE=true webpack --config ./webpack.renderer.js",
+    "sitemap:compile": "COMPILE=true webpack --config ./webpack.sitemap.js",
     "rs": "npm run renderer:start",
     "rc": "npm run renderer:compile",
     "ss": "npm run sitemap:start",
