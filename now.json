@@ -5,6 +5,9 @@
       "GRAPHQL_ENDPOINT":"https://s.meccamico.com/graphql"
     }
   },
+  "env":{
+    "BACKEND":"true"
+  }
 	"routes":[
     {
        "src": "/sitemap.xml",
