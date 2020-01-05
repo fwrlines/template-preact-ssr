@@ -47,6 +47,7 @@
     "@apollo/react-hooks": "^3.1.3",
     "@apollo/react-ssr": "^3.1.3",
     "@fwrlines/alphabet-scss": "^0.9.0",
+    "@fwrlines/ds": "^1.0.1-0",
     "@loadable/component": "^5.11.0",
     "@loadable/server": "^5.11.0",
     "apollo-cache-inmemory": "^1.6.5",
