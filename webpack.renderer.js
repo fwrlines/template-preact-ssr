@@ -32,10 +32,10 @@ module.exports = {
   ],
 
   output:{
-    path         :path.resolve(__dirname, 'api/'),
-    publicPath   :'/',
-    filename     :'renderer.js',
-    libraryTarget:'commonjs2'
+    path      :path.resolve(__dirname, 'api/'),
+    publicPath:'/',
+    filename  :'renderer.js'
+    //libraryTarget:'commonjs2'
   },
 
   plugins:[
