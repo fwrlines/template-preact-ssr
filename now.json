@@ -7,7 +7,7 @@
   },
   "env":{
     "BACKEND":"true"
-  }
+  },
 	"routes":[
     {
        "src": "/sitemap.xml",
