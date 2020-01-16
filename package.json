@@ -28,10 +28,10 @@
     "sc": "npm run sitemap:compile",
     "build": "npm run cpc && npm run rc && npm run sc",
     "now-build": "npm run cpc",
-    "deploy": "git add . && git commit -m '[Auto] Compile and deploy from cli' && git push",
-    "build:deploy": "npm run build && npm run deploy",
+    "deploy-commit": "git add . && git commit -m '[Auto] Compile and deploy from cli' && git push",
+    "build:deploy": "npm run build && npm run deploy-commit",
     "bd": "npm run build:deploy",
-    "test-eslint": "eslint"
+    "test-eslint": "eslint src/client.js"
   },
   "repository": {
     "type": "git",

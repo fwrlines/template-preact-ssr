@@ -35,6 +35,7 @@ module.exports = {
     path         :path.resolve(__dirname, 'api/'),
     publicPath   :'/',
     filename     :'renderer.js',
+    newparameter :'something',
     libraryTarget:'commonjs2'
   },
 

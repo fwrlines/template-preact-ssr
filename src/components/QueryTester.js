@@ -8,8 +8,10 @@ const QueryTester = ({ props }) => {
   const {
     loading,
     error,
-    data:{ i }={}
-  } = useQuery(gql(INITIAL_DATA_QUERY))
+    data={}
+  }= useQuery(gql(INITIAL_DATA_QUERY))
+
+  console.log('data', data, error)
 
   if (loading) return <p>Loading ...</p>
   return (
@@ -21,16 +23,11 @@ const QueryTester = ({ props }) => {
           href="http://mysite.com/example"
         />
       </Helmet>
-      { i.services.map((e,i) => (
-        <p key={i}>
-          <strong>
-            { e.name }
-&nbsp;
-          </strong>
-          { e.seotext }
-        </p>
-      )
-      )
+      { data &&
+      <>
+DATA :
+        { data.getHello.y }
+      </>
       }
     </>
   )
