@@ -1,5 +1,5 @@
 {
-  "regions":["lhr", "bru"],
+  "regions":["bru"],
   "build":{
     "env": {
       "GRAPHQL_ENDPOINT":"https://s.meccamico.com/graphql"
