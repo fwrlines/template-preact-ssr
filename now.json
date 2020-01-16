@@ -8,16 +8,6 @@
   "env":{
     "BACKEND":"true"
   },
-  "headers": [
-    {
-      "source": "/.*",
-      "headers" : [
-        {
-          "key" : "Cache-Control",
-        }
-      ]
-    }
-  ],
 	"routes":[
     {
        "src": "/sitemap.xml",
