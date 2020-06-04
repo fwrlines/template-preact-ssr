@@ -83,8 +83,8 @@ module.exports = {
 
     new CopyPlugin({
       patterns:[
-        { from: './src/assets/fonts', to: './public' },
-        { from: './src/assets/images', to: './public' }
+        { from: './src/assets/fonts', to: './' }, //Where the root is the output dir
+        { from: './src/assets/images', to: './' }
       ]
     }),
 
