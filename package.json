@@ -18,7 +18,7 @@
     "cps": "npm run client:prod:start",
     "cpc": "npm run client:prod:compile",
     "cpcw": "npm run cpc -- -- --watch",
-    "renderer:start": "nodemon --exec babel-node src/server.js",
+    "renderer:start": "nodemon --exec babel-node src/server.simple.js",
     "renderer:compile": "COMPILE=true webpack --config ./webpack.renderer.js",
     "sitemap:start": "nodemon --exec babel-node src/sitemap/server.js",
     "sitemap:compile": "COMPILE=true webpack --config ./webpack.sitemap.js",
@@ -31,7 +31,7 @@
     "deploy-commit": "git add . && git commit -m '[Auto] Compile and deploy from cli' && git push",
     "build:deploy": "npm run build && npm run deploy-commit",
     "bd": "npm run build:deploy",
-    "test-eslint": "eslint src/client.js"
+    "test-eslint": "eslint src/client.simple.js"
   },
   "repository": {
     "type": "git",
@@ -47,7 +47,8 @@
     "@apollo/react-hooks": "^3.1.5",
     "@apollo/react-ssr": "^3.1.5",
     "@fwrlines/alphabet-scss": "latest",
-    "@fwrlines/ds": "latest",
+    "@fwrlines/ds": "^2.7.4",
+    "@fwrlines/utils": "latest",
     "@loadable/component": "^5.12.0",
     "@loadable/server": "^5.12.0",
     "apollo-cache-inmemory": "^1.6.6",

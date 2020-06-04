@@ -27,7 +27,8 @@ module.exports = {
   },
 
   entry:[
-    './src/client.js'
+    './src/client.simple.js'
+    //'./src/client.js'
   ],
   output:{
     path         :path.resolve(__dirname, 'public/'),

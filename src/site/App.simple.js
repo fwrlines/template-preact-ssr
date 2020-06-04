@@ -1,7 +1,6 @@
 import { h, Fragment } from 'preact'
 import { useState } from 'preact/hooks'
 import Clock from 'ui/AsyncClock'
-import QueryTester from 'ui/QueryTester'
 import { AnimatedVCaret } from '@fwrlines/ds'
 
 const App = () => {
@@ -26,7 +25,6 @@ Includes
         Lighthouse 100/100 ootb
         </li>
         <li>
-        Apollo
           <p>env vars are</p>
           { process.env.GRAPHQL_ENDPOINT }
         </li>
@@ -35,7 +33,6 @@ Includes
         thing="thing"
         thing2="thing2"
       />
-      <QueryTester />
     </>
   )
 }

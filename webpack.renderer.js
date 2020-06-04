@@ -28,7 +28,8 @@ module.exports = {
   },
 
   entry:[
-    path.resolve(path.join(__dirname, 'src/renderer.js'))
+    path.resolve(path.join(__dirname, 'src/renderer.simple.js'))
+    //path.resolve(path.join(__dirname, 'src/renderer.js'))
   ],
 
   output:{
