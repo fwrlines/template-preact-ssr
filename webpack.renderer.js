@@ -69,6 +69,10 @@ module.exports = {
         use    :{
           loader:'babel-loader'
         }
+      },
+      {
+        test  :/\.(scss|css)$/,
+        loader:'ignore-loader'
       }
     ]
   }
