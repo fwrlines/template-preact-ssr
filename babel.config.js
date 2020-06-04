@@ -50,10 +50,12 @@ module.exports = function (api) {
 
 
   //['add-module-exports']
-
+  //
+  const ignore=['*.scss']
 
   return {
     presets,
-    plugins
+    plugins,
+    ignore
   }
 }
