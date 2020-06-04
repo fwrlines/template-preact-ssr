@@ -80,10 +80,12 @@ module.exports = {
       template:'./src/assets/html/index.prod.html'
     }),
 
-    new CopyPlugin([
-      { from: './src/assets/fonts', to: './public' },
-      { from: './src/assets/images', to: './public' }
-    ]),
+    new CopyPlugin({
+      patterns:[
+        { from: './src/assets/fonts', to: './public' },
+        { from: './src/assets/images', to: './public' }
+      ]
+    }),
 
     new LoadablePlugin(),
 

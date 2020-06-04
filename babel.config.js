@@ -19,13 +19,16 @@ module.exports = function (api) {
     'inline-dotenv',
     [
       'module-resolver', {
-        root :['./src'],
+        root:['./src']
+
+        /*
         alias:{
           'react'               :'preact/compat',
           'react-dom/test-utils':'preact/test-utils',
           'react-dom'           :'preact/compat'
           // Must be below test-utils
         }
+        */
       }
     ],
     '@babel/plugin-proposal-class-properties',
