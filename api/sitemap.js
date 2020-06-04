@@ -10,7 +10,7 @@ module.exports=function(e){var t={};function r(n){if(t[n])return t[n].exports;va
 /*!*****************************!*\
   !*** ./src/site/Loading.js ***!
   \*****************************/
-/*! exports provided: default */function(e,t,r){"use strict";r.r(t),r.d(t,"default",(function(){return o}));r(/*! preact/compat */"preact/compat");var n=r(/*! preact */"preact");function o(){return Object(n.h)("h1",null,"A module is loading")}},"./src/site/urls.js":
+/*! exports provided: default */function(e,t,r){"use strict";r.r(t),r.d(t,"default",(function(){return o}));r(/*! react */"react");var n=r(/*! preact */"preact");function o(){return Object(n.h)("h1",null,"A module is loading")}},"./src/site/urls.js":
 /*!**************************!*\
   !*** ./src/site/urls.js ***!
   \**************************/
@@ -54,8 +54,8 @@ module.exports=function(e){var t={};function r(n){if(t[n])return t[n].exports;va
 /*!*************************!*\
   !*** external "preact" ***!
   \*************************/
-/*! no static exports found */function(e,t){e.exports=require("preact")},"preact/compat":
-/*!********************************!*\
-  !*** external "preact/compat" ***!
-  \********************************/
-/*! no static exports found */function(e,t){e.exports=require("preact/compat")}});
+/*! no static exports found */function(e,t){e.exports=require("preact")},react:
+/*!************************!*\
+  !*** external "react" ***!
+  \************************/
+/*! no static exports found */function(e,t){e.exports=require("react")}});
