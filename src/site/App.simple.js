@@ -8,6 +8,7 @@ const App = () => {
   return (
     <>
       <h1 className="x-primary c-x">Preact test</h1>
+      <h3>Hello</h3>
       <h2>
 Includes
         <AnimatedVCaret

@@ -22,9 +22,9 @@ app.use(logRequestStart)
    router.use('^/$', serverRenderer) */
 router.use('[-a-z1-9\/]+', serverRenderer)
 // other static resources should just be served as they are
-router.use(express.static(path.resolve(__dirname, '..', 'public')))
+router.use(express.static(path.resolve(__dirname, '..', '..', 'public')))
 router.use(express.static(
-  path.resolve(__dirname, '..', 'dist', 'static'),
+  path.resolve(__dirname, '..', '..','dist', 'static'),
   { maxAge: '30d' },
 ))
 //router.use('*', serverRenderer)

@@ -48,7 +48,8 @@ export default async(req, res) => {
   console.log('We have the jsx')
 
   const html = await render(
-    extractor.collectChunks(appJsx)
+    //extractor.collectChunks(appJsx)
+    appJsx
   )
 
   console.log('We have the html', html)
