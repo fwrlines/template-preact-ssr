@@ -28,9 +28,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   resolve:{
     alias:{
-      'react'               :'preact/compat',
-      'react-dom/test-utils':'preact/test-utils',
-      'react-dom'           :'preact/compat'
+      'react'               :path.resolve('./node_modules/preact/compat'),
+      'react-dom/test-utils':path.resolve('./node_modules/preact/test-utils'),
+      'react-dom'           :path.resolve('./node_modules/preact/compat'),
+      '@fwrlines/utils'     :path.resolve('./node_modules/@fwrlines/utils')
       // Must be below test-utils
     }
   },

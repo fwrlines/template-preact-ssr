@@ -1,4 +1,4 @@
-import 'config/patchPreactSSR'
+import './patchPreactSSR'
 import { h } from 'preact'
 
 //import React from 'react'
@@ -6,23 +6,36 @@ import { h } from 'preact'
 //import ReactDOMServer from 'react-dom/server' //Not in use if we use apollo own renderer
 
 
+import { ApolloProvider } from '@apollo/react-hooks'
 import { ChunkExtractor } from '@loadable/server'
 
 import { StaticRouter } from 'react-router-dom'
 
 import { Helmet } from 'react-helmet'
 
-import App from 'site/App.simple.js'
+import { getClient } from './graphql/getClientSSR'
+import { getMarkupFromTree  } from '@apollo/react-ssr'
+
+import App from 'site/App.js'
 
 import template from 'assets/html/index.prod.html'
 
 import render from 'preact-render-to-string' //By default we use apollo's renderer
 
-import stats from '../public/loadable-stats.json'
+import stats from '../../public/loadable-stats.json'
 
 /* const statsFile = path.resolve(__dirname, '../dist/loadable-stats.json')
    We create an extractor from the statsFile */
 
+
+function renderToStringWithData(component) {
+  return getMarkupFromTree({
+    tree          :component,
+    renderFunction:render
+  })
+}
+
+const client = getClient(process.env.GRAPHQL_ENDPOINT)
 
 const routerContext = {}
 
@@ -31,15 +44,19 @@ export default async(req, res) => {
   const extractor = new ChunkExtractor({ stats })
 
   const appJsx=(
-    <StaticRouter
-      location={req.url}
-      context={routerContext}
+    <ApolloProvider
+      client={client}
     >
-      <App />
-    </StaticRouter>
+      <StaticRouter
+        location={req.url}
+        context={routerContext}
+      >
+        <App />
+      </StaticRouter>
+    </ApolloProvider>
   )
 
-  const html = await render(
+  const html = await renderToStringWithData(
     extractor.collectChunks(appJsx)
   )
 
@@ -68,7 +85,10 @@ export default async(req, res) => {
   return res.send(
     template
       .replace('<div id="main"></div>', `<div id="main">${html}</div>`)
-      .replace('</body>', scriptTags + '</body>')
+      .replace('</body>',
+        scriptTags
+        + `<script>window.__APOLLO_STATE__ = ${JSON.stringify(client.extract())}</script>`
+        + '</body>')
       .replace('<title></title>', helmet.title.toString() + helmet.meta.toString() + linkTags + styleTags)
       .replace(/(\r\n|\n|\r)/gm,'') //Minification
       .replace(/\s\s+/g, '') // Minification

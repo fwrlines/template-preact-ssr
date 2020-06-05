@@ -18,7 +18,7 @@
     "cps": "npm run client:prod:start",
     "cpc": "npm run client:prod:compile",
     "cpcw": "npm run cpc -- -- --watch",
-    "renderer:start": "nodemon --exec babel-node src/server.simple.js",
+    "renderer:start": "nodemon --exec babel-node src/ssr/server.simple.js",
     "renderer:compile": "COMPILE=true webpack --config ./webpack.renderer.js",
     "sitemap:start": "nodemon --exec babel-node src/sitemap/server.js",
     "sitemap:compile": "COMPILE=true webpack --config ./webpack.sitemap.js",

@@ -1,4 +1,4 @@
-import 'config/patchPreactSSR'
+import './patchPreactSSR'
 import { h } from 'preact'
 
 //import React from 'react'
@@ -6,59 +6,52 @@ import { h } from 'preact'
 //import ReactDOMServer from 'react-dom/server' //Not in use if we use apollo own renderer
 
 
-import { ApolloProvider } from '@apollo/react-hooks'
 import { ChunkExtractor } from '@loadable/server'
 
 import { StaticRouter } from 'react-router-dom'
 
 import { Helmet } from 'react-helmet'
 
-import { getClient } from './graphql/getClientSSR'
-import { getMarkupFromTree  } from '@apollo/react-ssr'
+console.log('in the imports')
 
-import App from 'site/App.js'
+import App from 'site/App.simple.js'
+
+console.log('22 in the imports')
 
 import template from 'assets/html/index.prod.html'
 
 import render from 'preact-render-to-string' //By default we use apollo's renderer
 
-import stats from '../public/loadable-stats.json'
+import stats from '../../public/loadable-stats.json'
 
 /* const statsFile = path.resolve(__dirname, '../dist/loadable-stats.json')
    We create an extractor from the statsFile */
 
-
-function renderToStringWithData(component) {
-  return getMarkupFromTree({
-    tree          :component,
-    renderFunction:render
-  })
-}
-
-const client = getClient(process.env.GRAPHQL_ENDPOINT)
+console.log('33 in the imports')
 
 const routerContext = {}
 
 export default async(req, res) => {
+  console.log('LAUNCH')
 
   const extractor = new ChunkExtractor({ stats })
 
   const appJsx=(
-    <ApolloProvider
-      client={client}
+    <StaticRouter
+      location={req.url}
+      context={routerContext}
     >
-      <StaticRouter
-        location={req.url}
-        context={routerContext}
-      >
-        <App />
-      </StaticRouter>
-    </ApolloProvider>
+      <App />
+    </StaticRouter>
   )
 
-  const html = await renderToStringWithData(
+  console.log('We have the jsx')
+
+  const html = await render(
     extractor.collectChunks(appJsx)
   )
+
+  console.log('We have the html', html)
 
   /* eslint-disable no-console */
   console.log(req.method, ' ', req.baseUrl || req.url)
@@ -85,10 +78,7 @@ export default async(req, res) => {
   return res.send(
     template
       .replace('<div id="main"></div>', `<div id="main">${html}</div>`)
-      .replace('</body>',
-        scriptTags
-        + `<script>window.__APOLLO_STATE__ = ${JSON.stringify(client.extract())}</script>`
-        + '</body>')
+      .replace('</body>', scriptTags + '</body>')
       .replace('<title></title>', helmet.title.toString() + helmet.meta.toString() + linkTags + styleTags)
       .replace(/(\r\n|\n|\r)/gm,'') //Minification
       .replace(/\s\s+/g, '') // Minification

@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = function (api) {
   api.cache(false)
 
@@ -22,9 +24,9 @@ module.exports = function (api) {
         root:['./src'],
 
         alias:{
-          'react'               :'preact/compat',
-          'react-dom/test-utils':'preact/test-utils',
-          'react-dom'           :'preact/compat'
+          'react'               :path.resolve('./node_modules/preact/compat'),
+          'react-dom/test-utils':path.resolve('./node_modules/preact/test-utils'),
+          'react-dom'           :path.resolve('./node_modules/preact/compat')
           // Must be below test-utils
         }
       }
@@ -48,10 +50,12 @@ module.exports = function (api) {
     '@loadable/babel-plugin'
   ]
 
+  const ignore = [
+    '*.scss'
+  ]
 
   //['add-module-exports']
   //
-  const ignore=['*.scss']
 
   return {
     presets,

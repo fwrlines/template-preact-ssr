@@ -18,6 +18,13 @@ const TerserPlugin = require('terser-webpack-plugin')
 
 module.exports = {
   resolve:{
+    alias:{
+      'react'               :path.resolve('./node_modules/preact/compat'),
+      'react-dom/test-utils':path.resolve('./node_modules/preact/test-utils'),
+      'react-dom'           :path.resolve('./node_modules/preact/compat'),
+      '@fwrlines/utils'     :path.resolve('./node_modules/@fwrlines/utils')
+      // Must be below test-utils
+    },
     modules:[
       path.resolve(__dirname, './src'),
       'node_modules'
@@ -28,7 +35,7 @@ module.exports = {
   },
 
   entry:[
-    path.resolve(path.join(__dirname, 'src/renderer.simple.js'))
+    path.resolve(path.join(__dirname, 'src/ssr/renderer.simple.js'))
     //path.resolve(path.join(__dirname, 'src/renderer.js'))
   ],
 
@@ -69,11 +76,14 @@ module.exports = {
         use    :{
           loader:'babel-loader'
         }
-      },
+      }
+
+      /*
       {
         test  :/\.(scss|css)$/,
         loader:'ignore-loader'
       }
+      */
     ]
   }
 
