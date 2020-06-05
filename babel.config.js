@@ -24,9 +24,9 @@ module.exports = function (api) {
         root:['./src'],
 
         alias:{
-          'react'               :path.resolve('./node_modules/preact/compat'),
-          'react-dom/test-utils':path.resolve('./node_modules/preact/test-utils'),
-          'react-dom'           :path.resolve('./node_modules/preact/compat')
+          'react'               :path.resolve(__dirname, 'node_modules/preact/compat'),
+          'react-dom/test-utils':path.resolve(__dirname, 'node_modules/preact/test-utils'),
+          'react-dom'           :path.resolve(__dirname, 'node_modules/preact/compat')
           // Must be below test-utils
         }
       }
