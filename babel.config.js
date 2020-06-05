@@ -21,14 +21,15 @@ module.exports = function (api) {
     'inline-dotenv',
     [
       'module-resolver', {
-        root:['./src'],
+        root:['./src']
 
+        /*
         alias:{
           'react'               :path.resolve(__dirname, 'node_modules/preact/compat'),
           'react-dom/test-utils':path.resolve(__dirname, 'node_modules/preact/test-utils'),
           'react-dom'           :path.resolve(__dirname, 'node_modules/preact/compat')
           // Must be below test-utils
-        }
+        }*/
       }
     ],
     '@babel/plugin-proposal-class-properties',
