@@ -61,7 +61,7 @@
     "graphql": "^15.0.0",
     "graphql-tag": "^2.10.3",
     "module-alias": "^2.2.2",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "preact": "^10.4.4",
     "preact-render-to-string": "^5.1.9",
     "react-helmet": "^6.0.0",
